@@ -3,17 +3,27 @@ import PrimaryColorText from "../typography/PrimaryColorText";
 import SideMenuItem from "./SideMenuItem";
 import AddPlayListButton from "../buttons/AddPlayListButton";
 
-export default function SideMenu() {
+export default function SideMenu({ handleSelectPage, activeComponent }) {
   return (
     <>
       <div className="py-5">
         <PrimaryColorText text={"Menu"} ClassName={"text-lg pl-2"} />
 
         <div className="my-1">
-          <SideMenuItem text={"Home"} icon={"/icons/home.svg"} />
+          <SideMenuItem
+            isActive={activeComponent === "Home" ? true : false}
+            handleSelectPage={handleSelectPage}
+            text={"Home"}
+            icon={"/icons/home.svg"}
+          />
         </div>
         <div className="my-1">
-          <SideMenuItem text={"Discover"} icon={"/icons/discover.svg"} />
+          <SideMenuItem
+            isActive={activeComponent === "Discover" ? true : false}
+            handleSelectPage={handleSelectPage}
+            text={"Discover"}
+            icon={"/icons/discover.svg"}
+          />
         </div>
         <div className="my-1">
           <SideMenuItem text={"Albums"} icon={"/icons/albums.svg"} />

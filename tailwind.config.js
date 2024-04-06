@@ -7,6 +7,7 @@ module.exports = {
         "primary-gradient": "linear-gradient(180deg, #EE10B0 0%, #0E9EEF 100%)",
       },
       colors: {
+        main: "#F32E7C",
         primary: {
           100: "#FFE0F6",
           200: "#F8BBE7",

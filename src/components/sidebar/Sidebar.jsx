@@ -2,7 +2,7 @@ import React from "react";
 import "../../style/gradients.css";
 import SideMenu from "./SideMenu";
 
-export default function Sidebar() {
+export default function Sidebar({ handleSelectPage, activeComponent }) {
   return (
     <div className="bg-secondary-900 px-4 py-7 h-screen w-full sticky top-0">
       <div>
@@ -11,7 +11,10 @@ export default function Sidebar() {
         </h1>
       </div>
 
-      <SideMenu />
+      <SideMenu
+        handleSelectPage={handleSelectPage}
+        activeComponent={activeComponent}
+      />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../../sidebar/Sidebar";
 import Home from "../../../pages/Home";
 import DiscoverPage from "../../../pages/DiscoverPage";
+import Header from "../../header/Header";
 
 export default function HomeLayout() {
   const [activeComponent, setActiveComponent] = useState("Home");
@@ -30,7 +31,10 @@ export default function HomeLayout() {
         />
       </div>
 
-      <div className="col-span-10 bg-red-200 h-full">
+      <div className="col-span-10 bg-gradient h-full">
+        <div>
+          <Header />
+        </div>
         {handleWhichActive(activeComponent)}
       </div>
     </div>

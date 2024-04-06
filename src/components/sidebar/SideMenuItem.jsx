@@ -8,7 +8,7 @@ export default function SideMenuItem({
 }) {
   return (
     <button
-      className={`p-2 rounded-lg h-full w-full outline-none focus:outline-none ${isActive ? "bg-main border border-main" : "border border-transparent"}`}
+      className={`p-2 rounded-lg h-full w-full outline-none focus:outline-none ${isActive ? "bg-main-500 border border-main-500" : "border border-transparent"}`}
       onClick={() => {
         handleSelectPage(text);
       }}

@@ -8,6 +8,6 @@
 }
 
 .bg-gradient {
-  background: rgb(14,25,32);
-  background: linear-gradient(90deg, rgba(14,25,32,1) 0%, rgba(65,44,58,1) 100%);
+  background: rgb(20, 36, 46);
+  background: linear-gradient(90deg, rgb(20, 36, 46) 0%, rgba(65,44,58,1) 100%);
 }

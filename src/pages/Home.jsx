@@ -5,6 +5,7 @@ import ViewMoreButton from "../components/buttons/ViewMoreButton";
 import MusicTrack from "../components/boxes/MusicTrack";
 import ArtistBox from "../components/boxes/ArtistBox";
 import MusicVideoBox from "../components/boxes/MusicVideoBox";
+import AlbumBox from "../components/boxes/AlbumBox";
 
 export default function Home() {
   const [songs, setSongs] = useState([
@@ -96,8 +97,47 @@ export default function Home() {
     },
   ]);
 
+  const [albums, setAlbums] = useState([
+    {
+      id: 1,
+      name: "Adele 21",
+      artist: "Adele",
+      img: "/img/album-1.png",
+      link: "/",
+    },
+    {
+      id: 2,
+      name: "Adele 21",
+      artist: "Adele",
+      img: "/img/album-1.png",
+      link: "/",
+    },
+    {
+      id: 3,
+      name: "Adele 21",
+      artist: "Adele",
+      img: "/img/album-1.png",
+      link: "/",
+    },
+    {
+      id: 4,
+      name: "Adele 21",
+      artist: "Adele",
+      img: "/img/album-1.png",
+      link: "/",
+    },
+    {
+      id: 5,
+      name: "Adele 21",
+      artist: "Adele",
+      img: "/img/album-1.png",
+      link: "/",
+    },
+  ]);
+
   return (
     <div className="px-20 py-10">
+      {/* weekly top songs */}
       <div>
         <TitleTwoColors text={"Weekly Top "} colorText={"Songs"} />
 
@@ -111,6 +151,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* new release songs */}
       <div className="my-14">
         <TitleTwoColors text={"New Release "} colorText={"Songs"} />
 
@@ -124,6 +165,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* trending songs */}
       <div className="my-14">
         <TitleTwoColors text={"Trending "} colorText={"Songs"} />
 
@@ -141,6 +183,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* artists */}
       <div className="my-14">
         <TitleTwoColors text={"Popular "} colorText={"Artists"} />
 
@@ -158,6 +201,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* music video */}
       <div className="my-14">
         <TitleTwoColors text={"Music "} colorText={"Video"} />
 
@@ -166,6 +210,28 @@ export default function Home() {
             return (
               <div className="my-5">
                 <MusicVideoBox data={item} key={item.id} />
+              </div>
+            );
+          })}
+          <div className="flex justify-end">
+            <ViewMoreButton />
+          </div>
+        </div>
+      </div>
+
+      {/* albums */}
+      <div className="my-14">
+        <TitleTwoColors
+          text={"Top "}
+          colorText={"Albums"}
+          color={"text-secondary-600"}
+        />
+
+        <div className="mt-6 grid grid-cols-6 gap-x-10 items-center">
+          {albums.map((item, index) => {
+            return (
+              <div className="my-5">
+                <AlbumBox data={item} key={item.id} />
               </div>
             );
           })}

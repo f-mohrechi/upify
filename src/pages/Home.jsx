@@ -6,6 +6,7 @@ import MusicTrack from "../components/boxes/MusicTrack";
 import ArtistBox from "../components/boxes/ArtistBox";
 import MusicVideoBox from "../components/boxes/MusicVideoBox";
 import AlbumBox from "../components/boxes/AlbumBox";
+import PlaylistBox from "../components/boxes/PlaylistBox";
 
 export default function Home() {
   const [songs, setSongs] = useState([
@@ -135,6 +136,39 @@ export default function Home() {
     },
   ]);
 
+  const [playlist, setPlaylist] = useState([
+    {
+      id: 1,
+      name: "Sad Playlist",
+      img: "/img/playlist-1.svg",
+      link: "/",
+    },
+    {
+      id: 2,
+      name: "Sad Playlist",
+      img: "/img/playlist-1.svg",
+      link: "/",
+    },
+    {
+      id: 3,
+      name: "Sad Playlist",
+      img: "/img/playlist-1.svg",
+      link: "/",
+    },
+    {
+      id: 4,
+      name: "Sad Playlist",
+      img: "/img/playlist-1.svg",
+      link: "/",
+    },
+    {
+      id: 5,
+      name: "Sad Playlist",
+      img: "/img/playlist-1.svg",
+      link: "/",
+    },
+  ]);
+
   return (
     <div className="px-20 py-10">
       {/* weekly top songs */}
@@ -232,6 +266,24 @@ export default function Home() {
             return (
               <div className="my-5">
                 <AlbumBox data={item} key={item.id} />
+              </div>
+            );
+          })}
+          <div className="flex justify-end">
+            <ViewMoreButton />
+          </div>
+        </div>
+      </div>
+
+      {/* playLists */}
+      <div className="my-14">
+        <TitleTwoColors text={"Mood "} colorText={"Playlists"} />
+
+        <div className="mt-6 grid grid-cols-6 gap-x-10 items-center">
+          {playlist.map((item, index) => {
+            return (
+              <div className="my-5">
+                <PlaylistBox data={item} key={item.id} />
               </div>
             );
           })}

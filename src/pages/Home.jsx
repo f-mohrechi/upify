@@ -3,6 +3,7 @@ import TitleTwoColors from "../components/typography/TitleTwoColors";
 import SongBox from "../components/boxes/SongBox";
 import ViewMoreButton from "../components/buttons/ViewMoreButton";
 import MusicTrack from "../components/boxes/MusicTrack";
+import ArtistBox from "../components/boxes/ArtistBox";
 
 export default function Home() {
   const [songs, setSongs] = useState([
@@ -58,6 +59,15 @@ export default function Home() {
     },
   ]);
 
+  const [artists, setArtists] = useState([
+    { id: 1, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    { id: 2, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    { id: 3, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    { id: 4, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    { id: 5, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    { id: 6, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+  ]);
+
   return (
     <div className="px-20 py-10">
       <div>
@@ -94,6 +104,23 @@ export default function Home() {
             return (
               <div className="my-5">
                 <MusicTrack data={item} key={item.id} />
+              </div>
+            );
+          })}
+          <div className="flex justify-center mt-5">
+            <ViewMoreButton />
+          </div>
+        </div>
+      </div>
+
+      <div className="my-14">
+        <TitleTwoColors text={"Popular "} colorText={"Artists"} />
+
+        <div className="mt-6 grid grid-cols-7 gap-x-10 items-center">
+          {artists.map((item, index) => {
+            return (
+              <div className="my-5">
+                <ArtistBox data={item} key={item.id} />
               </div>
             );
           })}

@@ -56,6 +56,19 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <div className="my-14">
+        <TitleTwoColors text={"New Release "} colorText={"Songs"} />
+
+        <div className="grid grid-cols-6 gap-x-10 mt-6 items-center">
+          {songs.map((item, index) => {
+            return <SongBox data={item} key={item.id} />;
+          })}
+          <div>
+            <ViewMoreButton />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

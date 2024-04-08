@@ -5,7 +5,7 @@ import PrimaryButton from "../buttons/PrimaryButton";
 
 export default function Header() {
   return (
-    <div className="px-20 py-7 flex items-center justify-between w-full text-white">
+    <div className="px-20 py-7 flex items-center justify-between w-full text-white bg-gradient">
       <div>
         <SearchInput />
       </div>

@@ -32,7 +32,7 @@ export default function HomeLayout() {
       </div>
 
       <div className="col-span-10 bg-gradient h-full">
-        <div>
+        <div className="sticky top-0 right-0 w-full">
           <Header />
         </div>
         {handleWhichActive(activeComponent)}

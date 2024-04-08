@@ -4,6 +4,7 @@ import SongBox from "../components/boxes/SongBox";
 import ViewMoreButton from "../components/buttons/ViewMoreButton";
 import MusicTrack from "../components/boxes/MusicTrack";
 import ArtistBox from "../components/boxes/ArtistBox";
+import MusicVideoBox from "../components/boxes/MusicVideoBox";
 
 export default function Home() {
   const [songs, setSongs] = useState([
@@ -68,6 +69,33 @@ export default function Home() {
     { id: 6, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
   ]);
 
+  const [videos, setVideos] = useState([
+    {
+      id: 1,
+      name: "Someone Like You",
+      artist: "Adele",
+      img: "/img/video-1.svg",
+      view: "3M views",
+      link: "/",
+    },
+    {
+      id: 2,
+      name: "Someone Like You",
+      artist: "Adele",
+      img: "/img/video-1.svg",
+      view: "3M views",
+      link: "/",
+    },
+    {
+      id: 3,
+      name: "Someone Like You",
+      artist: "Adele",
+      img: "/img/video-1.svg",
+      view: "3M views",
+      link: "/",
+    },
+  ]);
+
   return (
     <div className="px-20 py-10">
       <div>
@@ -77,7 +105,7 @@ export default function Home() {
           {songs.map((item, index) => {
             return <SongBox data={item} key={item.id} />;
           })}
-          <div>
+          <div className="flex justify-end">
             <ViewMoreButton />
           </div>
         </div>
@@ -90,7 +118,7 @@ export default function Home() {
           {songs.map((item, index) => {
             return <SongBox data={item} key={item.id} />;
           })}
-          <div>
+          <div className="flex justify-end">
             <ViewMoreButton />
           </div>
         </div>
@@ -124,7 +152,24 @@ export default function Home() {
               </div>
             );
           })}
-          <div className="flex justify-center mt-5">
+          <div className="flex justify-end mt-5">
+            <ViewMoreButton />
+          </div>
+        </div>
+      </div>
+
+      <div className="my-14">
+        <TitleTwoColors text={"Music "} colorText={"Video"} />
+
+        <div className="mt-6 grid grid-cols-4 gap-x-10 items-center">
+          {videos.map((item, index) => {
+            return (
+              <div className="my-5">
+                <MusicVideoBox data={item} key={item.id} />
+              </div>
+            );
+          })}
+          <div className="flex justify-end">
             <ViewMoreButton />
           </div>
         </div>

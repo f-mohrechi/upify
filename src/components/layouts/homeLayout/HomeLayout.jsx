@@ -3,6 +3,7 @@ import Sidebar from "../../sidebar/Sidebar";
 import Home from "../../../pages/Home";
 import DiscoverPage from "../../../pages/DiscoverPage";
 import Header from "../../header/Header";
+import Footer from "../../footer/Footer";
 
 export default function HomeLayout() {
   const [activeComponent, setActiveComponent] = useState("Home");
@@ -35,7 +36,11 @@ export default function HomeLayout() {
         <div className="sticky top-0 right-0 w-full">
           <Header />
         </div>
-        {handleWhichActive(activeComponent)}
+        <div>{handleWhichActive(activeComponent)}</div>
+
+        <div>
+          <Footer />
+        </div>
       </div>
     </div>
   );

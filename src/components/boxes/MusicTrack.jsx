@@ -7,14 +7,14 @@ export default function MusicTrack({ data }) {
         <p className="text-3xl font-medium">#{data.id}</p>
       </div>
 
-      <div className="bg-dark-800 rounded-xl grid grid-cols-12 w-full items-center">
+      <div className="bg-neutral-600 bg-opacity-30 rounded-xl grid grid-cols-12 w-full items-center">
         <div className="w-20 h-20 col-span-1">
           <img className="rounded-xl" src={data.img} alt="" />
         </div>
 
         <div className="col-span-3">
           <p className="text-lg font-semibold">{data.name}</p>
-          <p className="text-sm text-dark-200">{data.artist}</p>
+          <p className="text-sm text-neutral-400">{data.artist}</p>
         </div>
 
         <div className="col-span-2">

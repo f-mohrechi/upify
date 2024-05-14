@@ -14,13 +14,13 @@ export default function Header() {
         <div className="flex items-center gap-x-16 w-full">
           <Link
             to={"/about"}
-            className="hover:text-main-500 transition-all ease-linear delay-75 border-b border-b-transparent hover:border-b-main-500"
+            className="hover:text-rose-400 transition-all ease-linear delay-75 border-b border-b-transparent hover:border-b-rose-400"
           >
             About
           </Link>
           <Link
             to={"/contact"}
-            className="hover:text-main-500 transition-all ease-linear delay-75 border-b border-b-transparent hover:border-b-main-500"
+            className="hover:text-rose-400 transition-all ease-linear delay-75 border-b border-b-transparent hover:border-b-rose-400"
           >
             Contact
           </Link>

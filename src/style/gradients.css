@@ -1,13 +1,4 @@
-.main-gradient {
-  background: #EE10B0;
-  background: linear-gradient(to right, #EE10B0 0%, #0E9EEF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: normal;
-}
-
 .bg-gradient {
-  background: rgb(20, 36, 46);
-  background: linear-gradient(90deg, rgb(20, 36, 46) 0%, rgba(65,44,58,1) 100%);
+  background: rgb(10,10,10);
+  background: linear-gradient(90deg, rgba(10,10,10,1) , rgba(23,23,23,1));
 }

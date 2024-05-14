@@ -40,10 +40,10 @@ export default function Footer() {
       <div className="grid grid-cols-3 gap-x-16 items-start">
         <div className="col-span-2">
           <h2 className="text-3xl font-bold">
-            About &nbsp; <span className="main-gradient">Upify</span>
+            About &nbsp; <span className="text-rose-600">Upify</span>
           </h2>
           <div className="max-w-[450px] pt-4">
-            <p className="text-dark-200 text-lg">
+            <p className="text-neutral-400 text-lg">
               "Upify" is a dynamic web music player crafted with React.js,
               designed to elevate learning through immersive audio experiences.
               With its sleek interface and intuitive controls, Upify offers
@@ -57,7 +57,7 @@ export default function Footer() {
           <h3 className="text-2xl font-semibold">Contact</h3>
           <div className="pt-4">
             <Link
-              className="text-dark-200 text-lg hover:text-main-500 transition-all ease-linear delay-75"
+              className="text-neutral-400 text-lg hover:text-main-500 transition-all ease-linear delay-75"
               to={"/about"}
             >
               About

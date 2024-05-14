@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function PlaylistBox({ data }) {
   return (
     <Link to={data.link}>
-      <div className="rounded-xl bg-dark-800">
+      <div className="rounded-xl bg-neutral-800">
         <div className="">
           <img className="rounded-xl w-52" src={data.img} alt="" />
         </div>

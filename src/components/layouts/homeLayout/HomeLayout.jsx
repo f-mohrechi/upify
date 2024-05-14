@@ -38,9 +38,7 @@ export default function HomeLayout() {
         </div>
         <div>{handleWhichActive(activeComponent)}</div>
 
-        <div>
-          <Footer />
-        </div>
+        <div>{/* <Footer /> */}</div>
       </div>
     </div>
   );

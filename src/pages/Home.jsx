@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TitleTwoColors from "../components/typography/TitleTwoColors";
 import SongBox from "../components/boxes/SongBox";
 import ViewMoreButton from "../components/buttons/ViewMoreButton";
@@ -7,6 +7,7 @@ import ArtistBox from "../components/boxes/ArtistBox";
 import MusicVideoBox from "../components/boxes/MusicVideoBox";
 import AlbumBox from "../components/boxes/AlbumBox";
 import PlaylistBox from "../components/boxes/PlaylistBox";
+import { getNewReleasePodcasts, getToken } from "../services/spotify";
 
 export default function Home() {
   const [songs, setSongs] = useState([
@@ -136,41 +137,19 @@ export default function Home() {
     },
   ]);
 
-  const [playlist, setPlaylist] = useState([
-    {
-      id: 1,
-      name: "Sad Playlist",
-      img: "/img/playlist-1.svg",
-      link: "/",
-    },
-    {
-      id: 2,
-      name: "Sad Playlist",
-      img: "/img/playlist-1.svg",
-      link: "/",
-    },
-    {
-      id: 3,
-      name: "Sad Playlist",
-      img: "/img/playlist-1.svg",
-      link: "/",
-    },
-    {
-      id: 4,
-      name: "Sad Playlist",
-      img: "/img/playlist-1.svg",
-      link: "/",
-    },
-    {
-      id: 5,
-      name: "Sad Playlist",
-      img: "/img/playlist-1.svg",
-      link: "/",
-    },
-  ]);
+  const [playlist, setPlaylist] = useState();
+
+  useEffect(() => {
+    getToken().then((access_token) => {
+      getNewReleasePodcasts(access_token).then((playlist) => {
+        setPlaylist(playlist);
+      });
+    });
+  }, []);
 
   return (
     <div className="px-20 py-10">
+      {console.log(playlist, "pl")}
       {/* weekly top songs */}
       <div>
         <TitleTwoColors text={"Weekly Top "} colorText={"Songs"} />
@@ -277,16 +256,17 @@ export default function Home() {
 
       {/* playLists */}
       <div className="my-14">
-        <TitleTwoColors text={"Mood "} colorText={"Playlists"} />
+        <TitleTwoColors text={"New Release "} colorText={"Playlists"} />
 
         <div className="mt-6 grid grid-cols-6 gap-x-10 items-center">
-          {playlist.map((item, index) => {
-            return (
-              <div className="my-5">
-                <PlaylistBox data={item} key={item.id} />
-              </div>
-            );
-          })}
+          {playlist &&
+            playlist.albums.items.map((album) => {
+              return (
+                <div className="my-5">
+                  <PlaylistBox data={album} />
+                </div>
+              );
+            })}
           <div className="flex justify-end">
             <ViewMoreButton />
           </div>

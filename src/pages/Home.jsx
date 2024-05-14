@@ -258,7 +258,7 @@ export default function Home() {
         <TitleTwoColors
           text={"Top "}
           colorText={"Albums"}
-          color={"text-secondary-600"}
+          color={"text-cyan-400"}
         />
 
         <div className="mt-6 grid grid-cols-6 gap-x-10 items-center">

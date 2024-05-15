@@ -11,16 +11,16 @@ export default function SideMenu({ handleSelectPage, activeComponent }) {
 
         <div className="my-1">
           <SideMenuItem
-            isActive={activeComponent === "Home" ? true : false}
-            handleSelectPage={handleSelectPage}
+            // isActive={activeComponent === "Home" ? true : false}
+            // handleSelectPage={handleSelectPage}
             text={"Home"}
             icon={"/icons/home.svg"}
           />
         </div>
         <div className="my-1">
           <SideMenuItem
-            isActive={activeComponent === "Discover" ? true : false}
-            handleSelectPage={handleSelectPage}
+            // isActive={activeComponent === "Discover" ? true : false}
+            // handleSelectPage={handleSelectPage}
             text={"Discover"}
             icon={"/icons/discover.svg"}
           />

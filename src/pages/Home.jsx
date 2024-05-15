@@ -274,7 +274,7 @@ export default function Home() {
 
           {currentPage * ITEMS_PER_PAGE < playlist.length && (
             <div className="flex justify-end">
-              <ViewMoreButton />
+              <ViewMoreButton text={"New Release Playlists"} />
             </div>
           )}
         </div>

@@ -12,8 +12,8 @@ export default function Sidebar({ handleSelectPage, activeComponent }) {
       </div>
 
       <SideMenu
-        handleSelectPage={handleSelectPage}
-        activeComponent={activeComponent}
+      // handleSelectPage={handleSelectPage}
+      // activeComponent={activeComponent}
       />
     </div>
   );

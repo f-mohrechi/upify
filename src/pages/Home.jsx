@@ -7,61 +7,14 @@ import ArtistBox from "../components/boxes/ArtistBox";
 import MusicVideoBox from "../components/boxes/MusicVideoBox";
 import AlbumBox from "../components/boxes/AlbumBox";
 import PlaylistBox from "../components/boxes/PlaylistBox";
-import { getNewReleasePodcasts, getToken } from "../services/spotify";
+import {
+  getNewReleasePodcasts,
+  getRecomTracks,
+  getToken,
+} from "../services/spotify";
 
 export default function Home() {
-  const [songs, setSongs] = useState([
-    {
-      id: 1,
-      name: "Whatever It Takes",
-      artist: "Imagne Dragons",
-      album: "Hard to Imagine the Neighbourhood Ever Changing",
-      releaseDate: "Nov 4, 2023",
-      time: "3:26",
-      img: "/img/song-1.svg",
-      link: "",
-    },
-    {
-      id: 2,
-      name: "Whatever It Takes",
-      artist: "Imagne Dragons",
-      album: "Hard to Imagine the Neighbourhood Ever Changing",
-      releaseDate: "Nov 4, 2023",
-      time: "3:26",
-      img: "/img/song-1.svg",
-      link: "",
-    },
-    {
-      id: 3,
-      name: "Whatever It Takes",
-      artist: "Imagne Dragons",
-      album: "Hard to Imagine the Neighbourhood Ever Changing",
-      releaseDate: "Nov 4, 2023",
-      time: "3:26",
-      img: "/img/song-1.svg",
-      link: "",
-    },
-    {
-      id: 4,
-      name: "Whatever It Takes",
-      artist: "Imagne Dragons",
-      album: "Hard to Imagine the Neighbourhood",
-      releaseDate: "Nov 4, 2023",
-      time: "3:26",
-      img: "/img/song-1.svg",
-      link: "",
-    },
-    {
-      id: 5,
-      name: "Whatever It Takes",
-      artist: "Imagne Dragons",
-      album: "Hard to Imagine the Neighbourhood Ever Changing",
-      releaseDate: "Nov 4, 2023",
-      time: "3:26",
-      img: "/img/song-1.svg",
-      link: "",
-    },
-  ]);
+  const [recomSongs, setRecomSongs] = useState([]);
 
   const [artists, setArtists] = useState([
     { id: 1, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
@@ -147,24 +100,27 @@ export default function Home() {
         setPlaylist(playlist);
       });
     });
+    getToken().then((access_token) => {
+      getRecomTracks(access_token).then((songs) => {
+        setRecomSongs(songs);
+      });
+    });
   }, []);
 
   const currentItems = playlist.slice(0, currentPage * ITEMS_PER_PAGE);
 
   return (
     <div className="px-20 py-10">
-      {console.log(playlist, "pl")}
+      {console.log(recomSongs, "pl")}
       {/* weekly top songs */}
       <div>
-        <TitleTwoColors text={"Weekly Top "} colorText={"Songs"} />
+        <TitleTwoColors text={"Recomendation "} colorText={"Songs"} />
 
         <div className="grid grid-cols-6 gap-x-10 mt-6 items-center">
-          {songs.map((item, index) => {
-            return <SongBox data={item} key={item.id} />;
-          })}
-          <div className="flex justify-end">
-            <ViewMoreButton />
-          </div>
+          {recomSongs &&
+            recomSongs.map((item, index) => {
+              return <SongBox data={item} key={item.id} />;
+            })}
         </div>
       </div>
 
@@ -173,9 +129,10 @@ export default function Home() {
         <TitleTwoColors text={"New Release "} colorText={"Songs"} />
 
         <div className="grid grid-cols-6 gap-x-10 mt-6 items-center">
-          {songs.map((item, index) => {
-            return <SongBox data={item} key={item.id} />;
-          })}
+          {/* {songs &&
+            songs.map((item, index) => {
+              return <SongBox data={item} key={item.id} />;
+            })} */}
           <div className="flex justify-end">
             <ViewMoreButton />
           </div>
@@ -187,13 +144,14 @@ export default function Home() {
         <TitleTwoColors text={"Trending "} colorText={"Songs"} />
 
         <div className="mt-6">
-          {songs.map((item, index) => {
-            return (
-              <div className="my-5">
-                <MusicTrack data={item} key={item.id} />
-              </div>
-            );
-          })}
+          {/* {songs &&
+            songs.map((item, index) => {
+              return (
+                <div className="my-5">
+                  <MusicTrack data={item} key={item.id} />
+                </div>
+              );
+            })} */}
           <div className="flex justify-center mt-5">
             <ViewMoreButton />
           </div>

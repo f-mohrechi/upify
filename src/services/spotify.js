@@ -35,3 +35,14 @@ export const getNewReleasePodcasts = async (access_token) => {
 
   return response.data.albums.items;
 };
+
+export const getRecomTracks = async (access_token) => {
+  const response = await api.get(
+    "/v1/recommendations?limit=6&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA",
+    {
+      headers: { Authorization: "Bearer " + access_token },
+    }
+  );
+
+  return response.data.tracks;
+};

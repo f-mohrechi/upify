@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function ViewMoreButton() {
+export default function ViewMoreButton({ click }) {
   return (
     <div>
-      <button className="flex flex-col items-center">
+      <button className="flex flex-col items-center" onClick={click}>
         <div className="bg-neutral-800 rounded-full p-3 flex justify-center items-center w-16 h-16">
           <img src="/icons/plus.svg" alt="" />
         </div>

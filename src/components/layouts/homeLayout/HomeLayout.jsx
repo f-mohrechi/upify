@@ -7,19 +7,32 @@ import Footer from "../../footer/Footer";
 
 export default function HomeLayout() {
   const [activeComponent, setActiveComponent] = useState("Home");
+  const [items, setItems] = useState([]);
 
   const handleSelectPage = (page_name) => {
     setActiveComponent(page_name);
+    setItems(items);
   };
 
   function handleWhichActive(page_name) {
     switch (page_name) {
       case "Home":
-        return <Home />;
+        return (
+          <Home
+            handleSelectPage={handleSelectPage}
+            activeComponent={activeComponent}
+          />
+        );
+
       case "Discover":
         return <DiscoverPage />;
       default:
-        return <Home />;
+        return (
+          <Home
+            handleSelectPage={handleSelectPage}
+            activeComponent={activeComponent}
+          />
+        );
     }
   }
 

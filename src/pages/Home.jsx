@@ -137,7 +137,9 @@ export default function Home() {
     },
   ]);
 
-  const [playlist, setPlaylist] = useState();
+  const [playlist, setPlaylist] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 5;
 
   useEffect(() => {
     getToken().then((access_token) => {
@@ -146,6 +148,8 @@ export default function Home() {
       });
     });
   }, []);
+
+  const currentItems = playlist.slice(0, currentPage * ITEMS_PER_PAGE);
 
   return (
     <div className="px-20 py-10">
@@ -260,16 +264,19 @@ export default function Home() {
 
         <div className="mt-6 grid grid-cols-6 gap-x-10 items-center">
           {playlist &&
-            playlist.albums.items.map((album) => {
+            currentItems.map((album) => {
               return (
                 <div className="my-5">
                   <PlaylistBox data={album} />
                 </div>
               );
             })}
-          <div className="flex justify-end">
-            <ViewMoreButton />
-          </div>
+
+          {currentPage * ITEMS_PER_PAGE < playlist.length && (
+            <div className="flex justify-end">
+              <ViewMoreButton />
+            </div>
+          )}
         </div>
       </div>
     </div>

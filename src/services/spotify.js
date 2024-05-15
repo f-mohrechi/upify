@@ -33,5 +33,5 @@ export const getNewReleasePodcasts = async (access_token) => {
     headers: { Authorization: "Bearer " + access_token },
   });
 
-  return response.data;
+  return response.data.albums.items;
 };

@@ -135,7 +135,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* new release songs */}
+      {/* popular playlists */}
       <div className="my-14">
         <TitleTwoColors text={"Popular"} colorText={"Playlists"} />
 

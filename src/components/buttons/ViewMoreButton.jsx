@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function ViewMoreButton({ text }) {
+export default function ViewMoreButton({ text, dataType }) {
   const navigate = useNavigate();
 
   const goToPage = (text) => {
-    navigate(`/${text}`);
+    navigate(`/${text}`, { state: { dataType: dataType } });
   };
 
   return (

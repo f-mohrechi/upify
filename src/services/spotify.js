@@ -46,3 +46,11 @@ export const getRecomTracks = async (access_token) => {
 
   return response.data.tracks;
 };
+
+export const getCategories = async (access_token) => {
+  const response = await api.get("/v1/browse/categories", {
+    headers: { Authorization: "Bearer " + access_token },
+  });
+
+  return response.data.categories.items;
+};

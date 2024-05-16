@@ -4,10 +4,11 @@ import SongBox from "../components/boxes/SongBox";
 import ViewMoreButton from "../components/buttons/ViewMoreButton";
 import MusicTrack from "../components/boxes/MusicTrack";
 import ArtistBox from "../components/boxes/ArtistBox";
-import MusicVideoBox from "../components/boxes/MusicVideoBox";
 import AlbumBox from "../components/boxes/AlbumBox";
 import PlaylistBox from "../components/boxes/PlaylistBox";
+import CategoryBox from "../components/boxes/CategoryBox";
 import {
+  getCategories,
   getNewReleasePodcasts,
   getRecomTracks,
   getToken,
@@ -89,6 +90,7 @@ export default function Home() {
       link: "/",
     },
   ]);
+  const [categories, setCategories] = useState([]);
 
   const [playlist, setPlaylist] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -99,19 +101,26 @@ export default function Home() {
       getNewReleasePodcasts(access_token).then((playlist) => {
         setPlaylist(playlist);
       });
-    });
-    getToken().then((access_token) => {
+
       getRecomTracks(access_token).then((songs) => {
         setRecomSongs(songs);
+      });
+
+      getCategories(access_token).then((cats) => {
+        setCategories(cats);
       });
     });
   }, []);
 
-  const currentItems = playlist.slice(0, currentPage * ITEMS_PER_PAGE);
+  const currentPlaylistItems = playlist.slice(0, currentPage * ITEMS_PER_PAGE);
+  const currentCategoriesItems = categories.slice(
+    0,
+    currentPage * ITEMS_PER_PAGE
+  );
 
+  console.log(categories, "pl");
   return (
     <div className="px-20 py-10">
-      {console.log(recomSongs, "pl")}
       {/* weekly top songs */}
       <div>
         <TitleTwoColors text={"Recomendation "} colorText={"Songs"} />
@@ -176,21 +185,26 @@ export default function Home() {
         </div>
       </div>
 
-      {/* music video */}
+      {/* categories */}
       <div className="my-14">
-        <TitleTwoColors text={"Music "} colorText={"Video"} />
+        <TitleTwoColors text={"All "} colorText={"Categories"} />
 
-        <div className="mt-6 grid grid-cols-4 gap-x-10 items-center">
-          {videos.map((item, index) => {
-            return (
-              <div className="my-5">
-                <MusicVideoBox data={item} key={item.id} />
-              </div>
-            );
-          })}
-          <div className="flex justify-end">
-            <ViewMoreButton />
-          </div>
+        <div className="mt-6 grid grid-cols-6 gap-x-10 items-center">
+          {console.log(currentCategoriesItems, "eofuijeqwoi")}
+          {categories &&
+            currentCategoriesItems.map((item) => {
+              return (
+                <div className="my-5">
+                  <CategoryBox data={item} key={item.id} />
+                </div>
+              );
+            })}
+
+          {currentPage * ITEMS_PER_PAGE < categories.length && (
+            <div className="flex justify-end">
+              <ViewMoreButton text={"Categories"} dataType={"Categories"} />
+            </div>
+          )}
         </div>
       </div>
 
@@ -222,7 +236,7 @@ export default function Home() {
 
         <div className="mt-6 grid grid-cols-6 gap-x-10 items-center">
           {playlist &&
-            currentItems.map((album) => {
+            currentPlaylistItems.map((album) => {
               return (
                 <div className="my-5">
                   <PlaylistBox data={album} />
@@ -232,7 +246,10 @@ export default function Home() {
 
           {currentPage * ITEMS_PER_PAGE < playlist.length && (
             <div className="flex justify-end">
-              <ViewMoreButton text={"New Release Playlists"} />
+              <ViewMoreButton
+                text={"New Release Playlists"}
+                dataType={"Playlists"}
+              />
             </div>
           )}
         </div>

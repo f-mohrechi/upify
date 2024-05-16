@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   getCategories,
+  getFeaturedPlaylists,
   getNewReleasePodcasts,
   getToken,
 } from "../services/spotify";
@@ -34,6 +35,11 @@ function Page() {
         case "Categories":
           getCategories(access_token).then((categories) => {
             setData(categories);
+          });
+          break;
+        case "Popular Playlists":
+          getFeaturedPlaylists(access_token).then((fPlaylists) => {
+            setData(fPlaylists);
           });
           break;
         default:

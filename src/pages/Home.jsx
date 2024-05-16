@@ -9,6 +9,7 @@ import PlaylistBox from "../components/boxes/PlaylistBox";
 import CategoryBox from "../components/boxes/CategoryBox";
 import {
   getCategories,
+  getFeaturedPlaylists,
   getNewReleasePodcasts,
   getRecomTracks,
   getToken,
@@ -93,7 +94,7 @@ export default function Home() {
   const [categories, setCategories] = useState([]);
 
   const [playlist, setPlaylist] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
   const ITEMS_PER_PAGE = 5;
 
   useEffect(() => {
@@ -109,16 +110,17 @@ export default function Home() {
       getCategories(access_token).then((cats) => {
         setCategories(cats);
       });
+      getFeaturedPlaylists(access_token).then((fPlaylist) => {
+        setFeaturedPlaylists(fPlaylist);
+      });
     });
   }, []);
 
-  const currentPlaylistItems = playlist.slice(0, currentPage * ITEMS_PER_PAGE);
-  const currentCategoriesItems = categories.slice(
-    0,
-    currentPage * ITEMS_PER_PAGE
-  );
+  const currentPlaylistItems = playlist.slice(0, ITEMS_PER_PAGE);
+  const currentFeaturedPlaylists = featuredPlaylists.slice(0, ITEMS_PER_PAGE);
+  const currentCategoriesItems = categories.slice(0, ITEMS_PER_PAGE);
 
-  console.log(categories, "pl");
+  console.log(featuredPlaylists, "pl");
   return (
     <div className="px-20 py-10">
       {/* weekly top songs */}
@@ -135,16 +137,26 @@ export default function Home() {
 
       {/* new release songs */}
       <div className="my-14">
-        <TitleTwoColors text={"New Release "} colorText={"Songs"} />
+        <TitleTwoColors text={"Popular"} colorText={"Playlists"} />
 
         <div className="grid grid-cols-6 gap-x-10 mt-6 items-center">
-          {/* {songs &&
-            songs.map((item, index) => {
-              return <SongBox data={item} key={item.id} />;
-            })} */}
-          <div className="flex justify-end">
-            <ViewMoreButton />
-          </div>
+          {featuredPlaylists &&
+            currentFeaturedPlaylists.map((album) => {
+              return (
+                <div className="my-5">
+                  <PlaylistBox data={album} />
+                </div>
+              );
+            })}
+          {console.log(currentFeaturedPlaylists, "ffff")}
+          {ITEMS_PER_PAGE < featuredPlaylists.length && (
+            <div className="flex justify-end">
+              <ViewMoreButton
+                text={"Popular Playlists"}
+                dataType={"Playlists"}
+              />
+            </div>
+          )}
         </div>
       </div>
 
@@ -190,7 +202,6 @@ export default function Home() {
         <TitleTwoColors text={"All "} colorText={"Categories"} />
 
         <div className="mt-6 grid grid-cols-6 gap-x-10 items-center">
-          {console.log(currentCategoriesItems, "eofuijeqwoi")}
           {categories &&
             currentCategoriesItems.map((item) => {
               return (
@@ -200,7 +211,7 @@ export default function Home() {
               );
             })}
 
-          {currentPage * ITEMS_PER_PAGE < categories.length && (
+          {ITEMS_PER_PAGE < categories.length && (
             <div className="flex justify-end">
               <ViewMoreButton text={"Categories"} dataType={"Categories"} />
             </div>
@@ -230,7 +241,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* playLists */}
+      {/* new release playLists */}
       <div className="my-14">
         <TitleTwoColors text={"New Release "} colorText={"Playlists"} />
 
@@ -244,7 +255,7 @@ export default function Home() {
               );
             })}
 
-          {currentPage * ITEMS_PER_PAGE < playlist.length && (
+          {ITEMS_PER_PAGE < playlist.length && (
             <div className="flex justify-end">
               <ViewMoreButton
                 text={"New Release Playlists"}

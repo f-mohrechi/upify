@@ -54,3 +54,11 @@ export const getCategories = async (access_token) => {
 
   return response.data.categories.items;
 };
+
+export const getFeaturedPlaylists = async (access_token) => {
+  const response = await api.get("/v1/browse/featured-playlists ", {
+    headers: { Authorization: "Bearer " + access_token },
+  });
+
+  return response.data.playlists.items;
+};

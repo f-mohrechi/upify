@@ -62,3 +62,26 @@ export const getFeaturedPlaylists = async (access_token) => {
 
   return response.data.playlists.items;
 };
+
+export const getArtists = async (access_token) => {
+  const response = await api.get(
+    "/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2C57dN52uHvrHOxijzpIgu3E%2C1vCWHaC5f2uS3yhpwWbIA6",
+    {
+      headers: { Authorization: "Bearer " + access_token },
+    }
+  );
+
+  return response.data.artists;
+};
+
+export const getOnePlaylist = async (access_token, id) => {
+  try {
+    const response = await api.get(`/v1/playlists/${id}`, {
+      headers: { Authorization: "Bearer " + access_token },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching playlist:", error);
+    throw error;
+  }
+};

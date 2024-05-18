@@ -9,9 +9,11 @@ import {
 import PlaylistBox from "../components/boxes/PlaylistBox";
 import PrimaryColorText from "../components/typography/PrimaryColorText";
 import CategoryBox from "../components/boxes/CategoryBox";
+import Loading from "../components/loading/Loading";
 
 function Page() {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   let { title } = useParams();
   title = title.replace(/-/g, " "); // replace hyphens with spaces
@@ -30,20 +32,24 @@ function Page() {
         case "New Release Playlists":
           getNewReleasePodcasts(access_token).then((playlists) => {
             setData(playlists);
+            setLoading(false);
           });
           break;
         case "Categories":
           getCategories(access_token).then((categories) => {
             setData(categories);
+            setLoading(false);
           });
           break;
         case "Popular Playlists":
           getFeaturedPlaylists(access_token).then((fPlaylists) => {
             setData(fPlaylists);
+            setLoading(false);
           });
           break;
         default:
           setData(null);
+          setLoading(true);
       }
     });
   }, [title]);
@@ -79,6 +85,12 @@ function Page() {
                 );
               })}
           </div>
+        </div>
+      )}
+
+      {loading && (
+        <div className="flex justify-center items-center w-full h-screen">
+          <Loading />
         </div>
       )}
     </div>

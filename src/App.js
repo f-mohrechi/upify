@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Home from "./pages/Home";
 import DiscoverPage from "./pages/DiscoverPage";
 import Page from "./pages/Page";
+import Playlist from "./pages/Playlist";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/discover" element={<DiscoverPage />} />
+            <Route path="/playlist/:id" element={<Playlist />} />
             <Route path="/:title" element={<Page />} />
           </Routes>
         </div>

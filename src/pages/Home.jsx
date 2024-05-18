@@ -8,6 +8,7 @@ import AlbumBox from "../components/boxes/AlbumBox";
 import PlaylistBox from "../components/boxes/PlaylistBox";
 import CategoryBox from "../components/boxes/CategoryBox";
 import {
+  getArtists,
   getCategories,
   getFeaturedPlaylists,
   getNewReleasePodcasts,
@@ -19,12 +20,12 @@ export default function Home() {
   const [recomSongs, setRecomSongs] = useState([]);
 
   const [artists, setArtists] = useState([
-    { id: 1, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    { id: 2, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    { id: 3, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    { id: 4, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    { id: 5, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    { id: 6, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    // { id: 1, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    // { id: 2, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    // { id: 3, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    // { id: 4, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    // { id: 5, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
+    // { id: 6, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
   ]);
 
   const [videos, setVideos] = useState([
@@ -113,6 +114,9 @@ export default function Home() {
       getFeaturedPlaylists(access_token).then((fPlaylist) => {
         setFeaturedPlaylists(fPlaylist);
       });
+      getArtists(access_token).then((artists) => {
+        setArtists(artists);
+      });
     });
   }, []);
 
@@ -120,7 +124,7 @@ export default function Home() {
   const currentFeaturedPlaylists = featuredPlaylists.slice(0, ITEMS_PER_PAGE);
   const currentCategoriesItems = categories.slice(0, ITEMS_PER_PAGE);
 
-  console.log(featuredPlaylists, "pl");
+  console.log(playlist, "pl");
   return (
     <div className="px-20 py-10">
       {/* weekly top songs */}
@@ -148,7 +152,6 @@ export default function Home() {
                 </div>
               );
             })}
-          {console.log(currentFeaturedPlaylists, "ffff")}
           {ITEMS_PER_PAGE < featuredPlaylists.length && (
             <div className="flex justify-end">
               <ViewMoreButton
@@ -161,26 +164,26 @@ export default function Home() {
       </div>
 
       {/* trending songs */}
-      <div className="my-14">
+      {/* <div className="my-14">
         <TitleTwoColors text={"Trending "} colorText={"Songs"} />
 
         <div className="mt-6">
-          {/* {songs &&
+          {songs &&
             songs.map((item, index) => {
               return (
                 <div className="my-5">
                   <MusicTrack data={item} key={item.id} />
                 </div>
               );
-            })} */}
+            })}
           <div className="flex justify-center mt-5">
             <ViewMoreButton />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* artists */}
-      <div className="my-14">
+      {/* <div className="my-14">
         <TitleTwoColors text={"Popular "} colorText={"Artists"} />
 
         <div className="mt-6 grid grid-cols-7 gap-x-10 items-center">
@@ -195,7 +198,7 @@ export default function Home() {
             <ViewMoreButton />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* categories */}
       <div className="my-14">
@@ -220,7 +223,7 @@ export default function Home() {
       </div>
 
       {/* albums */}
-      <div className="my-14">
+      {/* <div className="my-14">
         <TitleTwoColors
           text={"Top "}
           colorText={"Albums"}
@@ -239,7 +242,7 @@ export default function Home() {
             <ViewMoreButton />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* new release playLists */}
       <div className="my-14">

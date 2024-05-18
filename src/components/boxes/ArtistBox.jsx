@@ -5,7 +5,11 @@ export default function ArtistBox({ data }) {
   return (
     <Link to={data.link} className="flex flex-col justify-center items-center">
       <div className="">
-        <img className="rounded-full w-36 h-36 " src={data.img} alt="" />
+        <img
+          className="rounded-full w-36 h-36 "
+          src={data.images[0].url}
+          alt=""
+        />
       </div>
 
       <div className="flex justify-center mt-5">

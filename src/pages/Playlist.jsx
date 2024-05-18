@@ -4,6 +4,7 @@ import { getOnePlaylist, getToken } from "../services/spotify";
 import Loading from "../components/loading/Loading";
 import GoBackButton from "../components/buttons/GoBackButton";
 import PlaylistInfo from "../components/sections/playlistPage/PlaylistInfo";
+import SongsTable from "../components/sections/tracks/SongsTable";
 
 export default function Playlist() {
   const [playlist, setPlaylist] = useState(null);
@@ -44,6 +45,12 @@ export default function Playlist() {
         <GoBackButton onClick={goBack} />
       </div>
       {playlist && <PlaylistInfo playlist={playlist} />}
+
+      {playlist && (
+        <div className="px-20 py-10">
+          <SongsTable songs={playlist.tracks.items} />
+        </div>
+      )}
 
       {loading && (
         <div className="flex justify-center items-center w-full h-screen">

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getOnePlaylist, getToken } from "../services/spotify";
 import Loading from "../components/loading/Loading";
+import GoBackButton from "../components/buttons/GoBackButton";
+import PlaylistInfo from "../components/sections/playlistPage/PlaylistInfo";
 
 export default function Playlist() {
   const [playlist, setPlaylist] = useState(null);
@@ -31,8 +33,18 @@ export default function Playlist() {
   }, [id]);
   console.log(playlist);
 
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div>
+      <div className="flex justify-end w-full px-10 py-5">
+        <GoBackButton onClick={goBack} />
+      </div>
+      {playlist && <PlaylistInfo playlist={playlist} />}
+
       {loading && (
         <div className="flex justify-center items-center w-full h-screen">
           <Loading />

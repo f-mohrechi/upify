@@ -10,6 +10,7 @@ import PlaylistBox from "../components/boxes/PlaylistBox";
 import PrimaryColorText from "../components/typography/PrimaryColorText";
 import CategoryBox from "../components/boxes/CategoryBox";
 import Loading from "../components/loading/Loading";
+import GoBackButton from "../components/buttons/GoBackButton";
 
 function Page() {
   const [data, setData] = useState(null);
@@ -60,9 +61,7 @@ function Page() {
       <div className="flex justify-between items-center w-full">
         <PrimaryColorText text={title} ClassName={"text-3xl font-semibold"} />
 
-        <button onClick={goBack} title="go back">
-          <img src="/icons/forward.svg" alt="" />
-        </button>
+        <GoBackButton onClick={goBack} />
       </div>
 
       {data && (

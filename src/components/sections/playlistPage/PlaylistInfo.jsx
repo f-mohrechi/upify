@@ -3,7 +3,7 @@ import React from "react";
 export default function PlaylistInfo({ playlist }) {
   return (
     <div
-      className={` h-96 w-full p-10`}
+      className={` h-96 w-full p-10 rounded-md`}
       style={{ backgroundColor: playlist.primary_color }}
     >
       <div className="grid grid-cols-7 gap-28 items-center">

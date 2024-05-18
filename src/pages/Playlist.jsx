@@ -40,7 +40,7 @@ export default function Playlist() {
   };
 
   return (
-    <div>
+    <div className="px-3">
       <div className="flex justify-end w-full px-10 py-5">
         <GoBackButton onClick={goBack} />
       </div>

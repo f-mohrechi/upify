@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getOneAlbum, getOnePlaylist, getToken } from "../services/spotify";
 import Loading from "../components/loading/Loading";
 import GoBackButton from "../components/buttons/GoBackButton";
+import HeaderInfo from "../components/sections/HeaderInfo";
 
 export default function AlbumPage() {
   const [album, setAlbum] = useState(null);
@@ -42,6 +43,8 @@ export default function AlbumPage() {
       <div className="flex justify-end w-full px-10 py-5">
         <GoBackButton onClick={goBack} />
       </div>
+
+      {album && <HeaderInfo data={album} />}
 
       {loading && (
         <div className="flex justify-center items-center w-full h-screen">

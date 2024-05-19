@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getOnePlaylist, getToken } from "../services/spotify";
 import Loading from "../components/loading/Loading";
 import GoBackButton from "../components/buttons/GoBackButton";
-import PlaylistInfo from "../components/sections/playlistPage/PlaylistInfo";
+import HeaderInfo from "../components/sections/HeaderInfo";
 import SongsTable from "../components/sections/tracks/SongsTable";
 
 export default function Playlist() {
@@ -44,7 +44,7 @@ export default function Playlist() {
       <div className="flex justify-end w-full px-10 py-5">
         <GoBackButton onClick={goBack} />
       </div>
-      {playlist && <PlaylistInfo playlist={playlist} />}
+      {playlist && <HeaderInfo data={playlist} />}
 
       {playlist && (
         <div className="px-20 py-10">

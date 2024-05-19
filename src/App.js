@@ -5,8 +5,7 @@ import Header from "./components/header/Header";
 import Home from "./pages/Home";
 import DiscoverPage from "./pages/DiscoverPage";
 import Page from "./pages/Page";
-import Playlist from "./pages/Playlist";
-import AlbumPage from "./pages/AlbumPage";
+import ContentPage from "./pages/ContentPage";
 
 function App() {
   return (
@@ -28,8 +27,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/discover" element={<DiscoverPage />} />
-            <Route path="/playlist/:id" element={<Playlist />} />
-            <Route path="/album/:id" element={<AlbumPage />} />
+            <Route path="/content/:type/:id" element={<ContentPage />} />
             <Route path="/:title" element={<Page />} />
           </Routes>
         </div>

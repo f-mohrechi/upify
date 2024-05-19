@@ -5,7 +5,7 @@ export default function AlbumBox({ data }) {
   const releaseYear = data.release_date.substring(0, 4);
 
   return (
-    <Link to={`/album/${data.id}`}>
+    <Link to={`/content/album/${data.id}`}>
       <div className="rounded-xl bg-neutral-800">
         <div className="">
           <img className="rounded-xl w-52" src={data.images[0].url} alt="" />

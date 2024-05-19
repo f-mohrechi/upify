@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function PlaylistBox({ data }) {
   return (
-    <Link to={`/playlist/${data.id}`}>
+    <Link to={`/content/playlist/${data.id}`}>
       <div className="rounded-xl bg-neutral-800 h-full flex flex-col">
         <div className="">
           <img className="rounded-t-xl w-52" src={data.images[0].url} alt="" />

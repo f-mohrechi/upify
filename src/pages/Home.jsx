@@ -244,26 +244,23 @@ export default function Home() {
         </div>
       </div> */}
 
-      {/* new release playLists */}
+      {/* new release Albums */}
       <div className="my-14">
-        <TitleTwoColors text={"New Release "} colorText={"Playlists"} />
+        <TitleTwoColors text={"New Release "} colorText={"Albums"} />
 
-        <div className="mt-6 grid grid-cols-6 gap-x-10 items-center">
+        <div className="mt-6 grid grid-cols-6 gap-x-10 items-center h-full">
           {playlist &&
             currentPlaylistItems.map((album) => {
               return (
                 <div className="my-5">
-                  <PlaylistBox data={album} />
+                  <AlbumBox data={album} />
                 </div>
               );
             })}
 
           {ITEMS_PER_PAGE < playlist.length && (
             <div className="flex justify-end">
-              <ViewMoreButton
-                text={"New Release Playlists"}
-                dataType={"Playlists"}
-              />
+              <ViewMoreButton text={"New Release Albums"} dataType={"Albums"} />
             </div>
           )}
         </div>

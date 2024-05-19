@@ -11,6 +11,7 @@ import PrimaryColorText from "../components/typography/PrimaryColorText";
 import CategoryBox from "../components/boxes/CategoryBox";
 import Loading from "../components/loading/Loading";
 import GoBackButton from "../components/buttons/GoBackButton";
+import AlbumBox from "../components/boxes/AlbumBox";
 
 function Page() {
   const [data, setData] = useState(null);
@@ -30,9 +31,9 @@ function Page() {
   useEffect(() => {
     getToken().then((access_token) => {
       switch (title) {
-        case "New Release Playlists":
-          getNewReleasePodcasts(access_token).then((playlists) => {
-            setData(playlists);
+        case "New Release Albums":
+          getNewReleasePodcasts(access_token).then((albums) => {
+            setData(albums);
             setLoading(false);
           });
           break;
@@ -80,6 +81,14 @@ function Page() {
                 return (
                   <div className="my-5">
                     <PlaylistBox data={item} key={item.id} />
+                  </div>
+                );
+              })}
+            {dataType === "Albums" &&
+              data.map((item) => {
+                return (
+                  <div className="my-5">
+                    <AlbumBox data={item} key={item.id} />
                   </div>
                 );
               })}

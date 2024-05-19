@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import DiscoverPage from "./pages/DiscoverPage";
 import Page from "./pages/Page";
 import Playlist from "./pages/Playlist";
+import AlbumPage from "./pages/AlbumPage";
 
 function App() {
   return (
@@ -24,9 +25,11 @@ function App() {
         </div>
         <div>
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/discover" element={<DiscoverPage />} />
             <Route path="/playlist/:id" element={<Playlist />} />
+            <Route path="/album/:id" element={<AlbumPage />} />
             <Route path="/:title" element={<Page />} />
           </Routes>
         </div>

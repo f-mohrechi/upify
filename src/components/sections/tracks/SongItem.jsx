@@ -18,7 +18,6 @@ export default function SongItem({ item, index }) {
 
   return (
     <div className="grid grid-cols-12 items-center text-white font-medium px-3">
-      {console.log(item, "item")}
       <div className="col-span-6 flex items-center gap-x-7">
         <p>{index + 1}</p>
         <div className="w-16 h-16">

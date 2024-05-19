@@ -4,6 +4,7 @@ import { getOneAlbum, getOnePlaylist, getToken } from "../services/spotify";
 import Loading from "../components/loading/Loading";
 import GoBackButton from "../components/buttons/GoBackButton";
 import HeaderInfo from "../components/sections/HeaderInfo";
+import SongsTable from "../components/sections/tracks/SongsTable";
 
 export default function AlbumPage() {
   const [album, setAlbum] = useState(null);
@@ -44,7 +45,15 @@ export default function AlbumPage() {
         <GoBackButton onClick={goBack} />
       </div>
 
-      {album && <HeaderInfo data={album} />}
+      {album && (
+        <>
+          <HeaderInfo data={album} />
+
+          <div className="px-20 py-10">
+            <SongsTable songs={album.tracks.items} type={"album"} />
+          </div>
+        </>
+      )}
 
       {loading && (
         <div className="flex justify-center items-center w-full h-screen">

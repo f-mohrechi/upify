@@ -48,7 +48,7 @@ export default function Playlist() {
 
       {playlist && (
         <div className="px-20 py-10">
-          <SongsTable songs={playlist.tracks.items} />
+          <SongsTable songs={playlist.tracks.items} type={"playlist"} />
         </div>
       )}
 

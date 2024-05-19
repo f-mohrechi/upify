@@ -1,7 +1,9 @@
 import React from "react";
 
-export default function SongItem({ item, index }) {
-  let song = item.track;
+export default function SongItem({ item, index, type }) {
+  let song = type === "album" ? item : item.track;
+
+  console.log(song, "song");
 
   const artistNames = song.artists.map((artist) => artist.name).join(", ");
 
@@ -20,9 +22,11 @@ export default function SongItem({ item, index }) {
     <div className="grid grid-cols-12 items-center text-white font-medium px-3">
       <div className="col-span-6 flex items-center gap-x-7">
         <p>{index + 1}</p>
-        <div className="w-16 h-16">
-          <img className="rounded-lg" src={song.album.images[0].url} alt="" />
-        </div>
+        {song.images && (
+          <div className="w-16 h-16">
+            <img className="rounded-lg" src={song.album.images[0].url} alt="" />
+          </div>
+        )}
 
         <div className="flex flex-col items-start">
           <p className="text-lg">{song.name}</p>
@@ -30,7 +34,11 @@ export default function SongItem({ item, index }) {
         </div>
       </div>
       <div className="col-span-4 ">
-        <p className="text-base text-neutral-500">{song.album.name}</p>
+        {type === "album" ? (
+          ""
+        ) : (
+          <p className="text-base text-neutral-500">{song.album.name}</p>
+        )}
       </div>
 
       <div className="col-span-2 flex justify-end">

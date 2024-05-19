@@ -1,7 +1,7 @@
 import React from "react";
 import SongItem from "./SongItem";
 
-export default function SongsTable({ songs }) {
+export default function SongsTable({ songs, type }) {
   return (
     <div>
       <div className="grid grid-cols-12 border-b border-b-neutral-700 text-neutral-400 pb-2 font-medium px-3">
@@ -9,7 +9,7 @@ export default function SongsTable({ songs }) {
           <p># Title</p>
         </div>
         <div className="col-span-4 ">
-          <p>Album</p>
+          {type === "album" ? "" : <p>Album</p>}
         </div>
 
         <div className="col-span-2 flex justify-end">
@@ -21,7 +21,7 @@ export default function SongsTable({ songs }) {
         {songs.map((item, index) => {
           return (
             <div className="py-3">
-              <SongItem item={item} key={item.id} index={index} />
+              <SongItem item={item} key={item.id} index={index} type={type} />
             </div>
           );
         })}

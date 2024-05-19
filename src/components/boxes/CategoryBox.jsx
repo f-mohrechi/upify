@@ -6,9 +6,9 @@ export default function CategoryBox({ data }) {
     data && data.icons && data.icons.length > 0 && data?.icons[0]?.url;
 
   return (
-    <Link to={data.href} className="flex flex-col bg-neutral-800 rounded-lg">
+    <Link to={data.href} className="flex flex-col bg-neutral-800 rounded-xl">
       <div>
-        <img className="rounded-t-lg w-full" src={imageUrl} alt="" />
+        <img className="rounded-t-xl w-full" src={imageUrl} alt="" />
       </div>
 
       <div className="px-4 py-2.5">

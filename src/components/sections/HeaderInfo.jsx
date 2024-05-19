@@ -46,7 +46,8 @@ export default function HeaderInfo({ data }) {
 
                     <div>
                       <p className="font-medium text-neutral-800">
-                        ,{data.tracks.items.length} tracks
+                        ,{data.tracks.items.length}{" "}
+                        {data.tracks.items.length > 1 ? "tracks" : "track"}
                       </p>
                     </div>
                   </div>

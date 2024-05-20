@@ -97,3 +97,15 @@ export const getOneAlbum = async (access_token, id) => {
     throw error;
   }
 };
+
+export const getOneCategory = async (access_token, id) => {
+  try {
+    const response = await api.get(`/v1/browse/categories/${id}/playlists`, {
+      headers: { Authorization: "Bearer " + access_token },
+    });
+    return response.data.playlists.items;
+  } catch (error) {
+    console.error("Error fetching album:", error);
+    throw error;
+  }
+};

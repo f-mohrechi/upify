@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getOneAlbum, getOnePlaylist, getToken } from "../services/spotify";
+import {
+  getOneAlbum,
+  getOneCategory,
+  getOnePlaylist,
+  getToken,
+} from "../services/spotify";
 import Loading from "../components/loading/Loading";
 import GoBackButton from "../components/buttons/GoBackButton";
 import HeaderInfo from "../components/sections/HeaderInfo";
@@ -38,6 +43,17 @@ export default function ContentPage() {
           .catch((error) => {
             console.error("Error fetching playlist:", error);
           });
+      } else if (type === "category") {
+        getOneCategory(access_token, id)
+          .then((category) => {
+            if (isMounted) {
+              setContent(category);
+              setLoading(false);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching category:", error);
+          });
       }
     });
 
@@ -50,6 +66,10 @@ export default function ContentPage() {
   const goBack = () => {
     navigate(-1);
   };
+
+  console.log("coooooooooooooooontent");
+
+  console.log(content, "content");
 
   return (
     <div className="px-3">

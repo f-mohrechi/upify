@@ -29,6 +29,7 @@ function App() {
             <Route path="/discover" element={<DiscoverPage />} />
             <Route path="/content/:type/:id" element={<ContentPage />} />
             <Route path="/:title" element={<Page />} />
+            <Route path="/:title/:id" element={<Page />} />
           </Routes>
         </div>
 

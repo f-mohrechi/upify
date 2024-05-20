@@ -124,7 +124,7 @@ export default function Home() {
   const currentFeaturedPlaylists = featuredPlaylists.slice(0, ITEMS_PER_PAGE);
   const currentCategoriesItems = categories.slice(0, ITEMS_PER_PAGE);
 
-  console.log(playlist, "pl");
+  console.log(categories, "plgj");
   return (
     <div className="px-20 py-10">
       {/* weekly top songs */}
@@ -209,7 +209,11 @@ export default function Home() {
             currentCategoriesItems.map((item) => {
               return (
                 <div className="my-5">
-                  <CategoryBox data={item} key={item.id} />
+                  <CategoryBox
+                    data={item}
+                    key={item.id}
+                    dataType={"Category"}
+                  />
                 </div>
               );
             })}

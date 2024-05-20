@@ -4,6 +4,7 @@ import {
   getCategories,
   getFeaturedPlaylists,
   getNewReleasePodcasts,
+  getOneCategory,
   getToken,
 } from "../services/spotify";
 import PlaylistBox from "../components/boxes/PlaylistBox";
@@ -17,7 +18,7 @@ function Page() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  let { title } = useParams();
+  let { title, id } = useParams();
   title = title.replace(/-/g, " "); // replace hyphens with spaces
 
   const navigate = useNavigate();
@@ -49,13 +50,20 @@ function Page() {
             setLoading(false);
           });
           break;
+        case "Category":
+          getOneCategory(access_token, id).then((category) => {
+            // Pass id here
+            setData(category);
+            setLoading(false);
+          });
+          break;
         default:
           setData(null);
           setLoading(true);
       }
     });
   }, [title]);
-  console.log(data, "data");
+  console.log(data, dataType, "data");
 
   return (
     <div className="text-white px-20 py-10">
@@ -72,11 +80,15 @@ function Page() {
               data.map((item) => {
                 return (
                   <div className="my-5">
-                    <CategoryBox data={item} key={item.id} />
+                    <CategoryBox
+                      data={item}
+                      key={item.id}
+                      dataType={"Category"}
+                    />
                   </div>
                 );
               })}
-            {dataType === "Playlists" &&
+            {(dataType === "Category") | (dataType === "Playlists") &&
               data.map((item) => {
                 return (
                   <div className="my-5">
@@ -84,6 +96,7 @@ function Page() {
                   </div>
                 );
               })}
+
             {dataType === "Albums" &&
               data.map((item) => {
                 return (

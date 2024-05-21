@@ -28,7 +28,7 @@ export const getTrackInfo = async (access_token) => {
   return response.data;
 };
 
-export const getNewReleasePodcasts = async (access_token) => {
+export const getNewReleaseAlbums = async (access_token) => {
   const response = await api.get("/v1/browse/new-releases", {
     headers: { Authorization: "Bearer " + access_token },
   });

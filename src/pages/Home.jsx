@@ -11,7 +11,7 @@ import {
   getArtists,
   getCategories,
   getFeaturedPlaylists,
-  getNewReleasePodcasts,
+  getNewReleaseAlbums,
   getRecomTracks,
   getToken,
 } from "../services/spotify";
@@ -19,14 +19,7 @@ import {
 export default function Home() {
   const [recomSongs, setRecomSongs] = useState([]);
 
-  const [artists, setArtists] = useState([
-    // { id: 1, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    // { id: 2, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    // { id: 3, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    // { id: 4, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    // { id: 5, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-    // { id: 6, name: "Eminiem", img: "/img/artist-1.png", link: "/" },
-  ]);
+  const [artists, setArtists] = useState([]);
 
   const [videos, setVideos] = useState([
     {
@@ -55,43 +48,7 @@ export default function Home() {
     },
   ]);
 
-  const [albums, setAlbums] = useState([
-    {
-      id: 1,
-      name: "Adele 21",
-      artist: "Adele",
-      img: "/img/album-1.png",
-      link: "/",
-    },
-    {
-      id: 2,
-      name: "Adele 21",
-      artist: "Adele",
-      img: "/img/album-1.png",
-      link: "/",
-    },
-    {
-      id: 3,
-      name: "Adele 21",
-      artist: "Adele",
-      img: "/img/album-1.png",
-      link: "/",
-    },
-    {
-      id: 4,
-      name: "Adele 21",
-      artist: "Adele",
-      img: "/img/album-1.png",
-      link: "/",
-    },
-    {
-      id: 5,
-      name: "Adele 21",
-      artist: "Adele",
-      img: "/img/album-1.png",
-      link: "/",
-    },
-  ]);
+  const [albums, setAlbums] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const [playlist, setPlaylist] = useState([]);
@@ -100,8 +57,8 @@ export default function Home() {
 
   useEffect(() => {
     getToken().then((access_token) => {
-      getNewReleasePodcasts(access_token).then((playlist) => {
-        setPlaylist(playlist);
+      getNewReleaseAlbums(access_token).then((album) => {
+        setAlbums(album);
       });
 
       getRecomTracks(access_token).then((songs) => {
@@ -120,7 +77,7 @@ export default function Home() {
     });
   }, []);
 
-  const currentPlaylistItems = playlist.slice(0, ITEMS_PER_PAGE);
+  const currentAlbumItems = albums.slice(0, ITEMS_PER_PAGE);
   const currentFeaturedPlaylists = featuredPlaylists.slice(0, ITEMS_PER_PAGE);
   const currentCategoriesItems = categories.slice(0, ITEMS_PER_PAGE);
 
@@ -254,7 +211,7 @@ export default function Home() {
 
         <div className="mt-6 grid grid-cols-6 gap-x-10 items-center h-full">
           {playlist &&
-            currentPlaylistItems.map((album) => {
+            currentAlbumItems.map((album) => {
               return (
                 <div className="my-5">
                   <AlbumBox data={album} />

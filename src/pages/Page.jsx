@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   getCategories,
   getFeaturedPlaylists,
-  getNewReleasePodcasts,
+  getNewReleaseAlbums,
   getOneCategory,
   getToken,
 } from "../services/spotify";
@@ -33,7 +33,7 @@ function Page() {
     getToken().then((access_token) => {
       switch (title) {
         case "New Release Albums":
-          getNewReleasePodcasts(access_token).then((albums) => {
+          getNewReleaseAlbums(access_token).then((albums) => {
             setData(albums);
             setLoading(false);
           });

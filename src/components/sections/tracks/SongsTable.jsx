@@ -18,7 +18,7 @@ export default function SongsTable({ songs, type }) {
       </div>
 
       <div className="pt-2">
-        {songs.map((item, index) => {
+        {songs?.map((item, index) => {
           return (
             <div className="py-3">
               <SongItem item={item} key={item.id} index={index} type={type} />

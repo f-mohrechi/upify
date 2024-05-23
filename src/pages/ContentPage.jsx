@@ -80,7 +80,7 @@ export default function ContentPage() {
 
       {content && (
         <div className="px-20 py-10">
-          <SongsTable songs={content.tracks.items} type={type} />
+          <SongsTable songs={content?.tracks?.items} type={type} />
         </div>
       )}
 

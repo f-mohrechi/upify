@@ -65,7 +65,7 @@ export const getFeaturedPlaylists = async (access_token) => {
 
 export const getArtists = async (access_token) => {
   const response = await api.get(
-    "/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2C57dN52uHvrHOxijzpIgu3E%2C1vCWHaC5f2uS3yhpwWbIA6",
+    "/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2C57dN52uHvrHOxijzpIgu3E%2C1vCWHaC5f2uS3yhpwWbIA6,06HL4z0CvFAxyc27GXpf02,4gzpq5DPGxSnKTe4SA8HAU,6eUKZXaKkcviH0Ku9w2n3V",
     {
       headers: { Authorization: "Bearer " + access_token },
     }

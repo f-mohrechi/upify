@@ -1,8 +1,6 @@
 import React from "react";
 
 export default function HeaderInfo({ data }) {
-  console.log(data, "infopage");
-
   return (
     <div
       className={`w-full p-10 rounded-md`}

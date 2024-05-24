@@ -8,7 +8,13 @@ export default function AlbumBox({ data }) {
     <Link to={`/content/album/${data.id}`}>
       <div className="rounded-xl bg-neutral-800">
         <div className="">
-          <img className="rounded-t-xl w-52" src={data.images[0].url} alt="" />
+          <img
+            className="rounded-t-xl w-52"
+            src={
+              data?.images[0].url ? data?.images[0]?.url : "/img/no-image.jpg"
+            }
+            alt=""
+          />
         </div>
 
         <div className="p-3">

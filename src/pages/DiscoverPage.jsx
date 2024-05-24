@@ -8,6 +8,7 @@ import SearchInput from "../components/textField/SearchInput";
 import AlbumBox from "../components/boxes/AlbumBox";
 import PlaylistBox from "../components/boxes/PlaylistBox";
 import MusicTrack from "../components/boxes/MusicTrack";
+import Loading from "../components/loading/Loading";
 
 export default function DiscoverPage() {
   const navigate = useNavigate();
@@ -15,21 +16,25 @@ export default function DiscoverPage() {
   const [categories, setCategories] = useState([]);
   const [searchResults, setSearchResults] = useState();
   const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getToken().then((access_token) => {
       getCategories(access_token).then((cats) => {
         setCategories(cats);
+        setLoading(false);
       });
     });
   }, []);
 
   const handleSearch = async () => {
     try {
+      setLoading(true);
       const accessToken = await getToken();
       const results = await searchQuery(accessToken, query);
       setSearchResults(results);
       console.log(results, "fwe.fmwlkl");
+      setLoading(false);
     } catch (error) {
       console.error("Error searching:", error);
     }
@@ -103,6 +108,12 @@ export default function DiscoverPage() {
             </div>
           </div>
         </>
+      )}
+
+      {loading && (
+        <div className="flex justify-center items-center w-full h-screen">
+          <Loading />
+        </div>
       )}
     </div>
   );

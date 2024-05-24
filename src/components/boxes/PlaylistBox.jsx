@@ -7,8 +7,10 @@ export default function PlaylistBox({ data }) {
       <div className="rounded-xl bg-neutral-800 h-full flex flex-col">
         <div className="">
           <img
-            className="rounded-t-xl w-52"
-            src={data?.images[0]?.url}
+            className="rounded-t-xl w-52 h-52 object-cover"
+            src={
+              data?.images[0].url ? data?.images[0]?.url : "/img/no-image.jpg"
+            }
             alt=""
           />
         </div>

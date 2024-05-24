@@ -3,7 +3,7 @@ import React from "react";
 export default function MusicTrack({ data }) {
   const artistNames = data.artists.map((artist) => artist.name).join(", ");
 
-  // const releaseYear = data.release_date.substring(0, 4);
+  const releaseYear = data.album.release_date.substring(0, 4);
 
   const msToTime = (duration) => {
     let seconds = Math.floor(duration / 1000);
@@ -33,7 +33,7 @@ export default function MusicTrack({ data }) {
         </div>
 
         <div className="col-span-2">
-          <p>{data.release_date}</p>
+          <p>{releaseYear}</p>
         </div>
 
         <div className="col-span-5">

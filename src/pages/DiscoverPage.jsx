@@ -9,6 +9,7 @@ import AlbumBox from "../components/boxes/AlbumBox";
 import PlaylistBox from "../components/boxes/PlaylistBox";
 import MusicTrack from "../components/boxes/MusicTrack";
 import Loading from "../components/loading/Loading";
+import PrimaryColorText from "../components/typography/PrimaryColorText";
 
 export default function DiscoverPage() {
   const navigate = useNavigate();
@@ -44,6 +45,12 @@ export default function DiscoverPage() {
     navigate(-1);
   };
 
+  const limit = 6;
+
+  const trackItems = searchResults?.tracks?.items?.slice(0, limit);
+  const albumItems = searchResults?.albums?.items?.slice(0, limit);
+  const playlistItems = searchResults?.playlists?.items?.slice(0, limit);
+
   return (
     <div className="px-20">
       <div className="flex justify-end w-full">
@@ -60,31 +67,52 @@ export default function DiscoverPage() {
 
       {searchResults ? (
         <>
-          <div className="grid grid-cols-6 gap-10 mt-10">
-            {searchResults?.albums?.items?.map((item) => {
-              return (
-                <div>
-                  <AlbumBox data={item} key={item.id} />
-                </div>
-              );
-            })}
-            {searchResults?.playlists?.items?.map((item) => {
-              return (
-                <div>
-                  <PlaylistBox data={item} key={item.id} />
-                </div>
-              );
-            })}
+          <div className="mt-10">
+            <PrimaryColorText
+              text={"Songs"}
+              ClassName={"text-2xl font-semibold"}
+            />
+            <div className="grid grid-cols-2 gap-5 mt-3">
+              {trackItems?.map((item) => {
+                return (
+                  <div className="">
+                    <MusicTrack data={item} key={item.id} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="mt-10">
-            {searchResults?.tracks?.items?.map((item) => {
-              return (
-                <div className="py-3">
-                  <MusicTrack data={item} key={item.id} />
-                </div>
-              );
-            })}
+          <div className="my-10">
+            <PrimaryColorText
+              text={"Albums"}
+              ClassName={"text-2xl font-semibold"}
+            />
+            <div className="grid grid-cols-6 gap-10 mt-5">
+              {albumItems.map((item) => {
+                return (
+                  <div>
+                    <AlbumBox data={item} key={item.id} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="my-10">
+            <PrimaryColorText
+              text={"Playlists"}
+              ClassName={"text-2xl font-semibold"}
+            />
+            <div className="grid grid-cols-6 gap-10 mt-5">
+              {playlistItems.map((item) => {
+                return (
+                  <div>
+                    <PlaylistBox data={item} key={item.id} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </>
       ) : (

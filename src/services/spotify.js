@@ -1,3 +1,4 @@
+import axios from "axios";
 import { accountAPi, api } from "./api";
 
 const client_id = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
@@ -106,6 +107,20 @@ export const getOneCategory = async (access_token, id) => {
     return response.data.playlists.items;
   } catch (error) {
     console.error("Error fetching album:", error);
+    throw error;
+  }
+};
+export const searchQuery = async (access_token, query) => {
+  try {
+    const response = await api.get(
+      `/v1/search?type=album,track,playlist&q=${query}`,
+      {
+        headers: { Authorization: "Bearer " + access_token },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
     throw error;
   }
 };

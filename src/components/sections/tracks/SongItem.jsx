@@ -3,8 +3,6 @@ import React from "react";
 export default function SongItem({ item, index, type }) {
   let song = type === "album" ? item : item.track;
 
-  console.log(song, "song");
-
   const artistNames = song.artists.map((artist) => artist.name).join(", ");
 
   const msToTime = (duration) => {

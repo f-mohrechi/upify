@@ -35,7 +35,6 @@ export default function DiscoverPage() {
       const accessToken = await getToken();
       const results = await searchQuery(accessToken, query);
       setSearchResults(results);
-      console.log(results, "fwe.fmwlkl");
       setLoading(false);
     } catch (error) {
       console.error("Error searching:", error);

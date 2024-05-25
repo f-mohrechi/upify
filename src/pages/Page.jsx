@@ -63,7 +63,6 @@ function Page() {
       }
     });
   }, [title]);
-  console.log(data, dataType, "data");
 
   return (
     <div className="text-white px-20 py-10">

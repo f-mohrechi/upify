@@ -3,8 +3,6 @@ import React from "react";
 export default function MusicTrack({ data }) {
   const artistNames = data.artists.map((artist) => artist.name).join(", ");
 
-  const releaseYear = data.album.release_date.substring(0, 4);
-
   const msToTime = (duration) => {
     let seconds = Math.floor(duration / 1000);
     let minutes = Math.floor(seconds / 60);
@@ -38,7 +36,6 @@ export default function MusicTrack({ data }) {
             {artistNames.length > 12
               ? `${artistNames.substring(0, 12)}...`
               : artistNames}
-            {/* {artistNames} */}
           </p>
         </div>
 

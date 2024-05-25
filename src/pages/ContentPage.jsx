@@ -67,10 +67,6 @@ export default function ContentPage() {
     navigate(-1);
   };
 
-  console.log("coooooooooooooooontent");
-
-  console.log(content, "content");
-
   return (
     <div className="px-3">
       <div className="flex justify-end w-full px-10 py-5">

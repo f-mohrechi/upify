@@ -2,8 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function ArtistBox({ data }) {
+  console.log(data);
+
   return (
-    <Link to={data.link} className="flex flex-col justify-center items-center">
+    <Link
+      to={`/artist/${data.id}`}
+      className="flex flex-col justify-center items-center"
+    >
       <div className="">
         <img
           className="rounded-full w-36 h-36 "

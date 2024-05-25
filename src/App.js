@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import DiscoverPage from "./pages/DiscoverPage";
 import Page from "./pages/Page";
 import ContentPage from "./pages/ContentPage";
+import ArtistPage from "./pages/ArtistPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/discover" element={<DiscoverPage />} />
+            <Route path="/artist/:id" element={<ArtistPage />} />
             <Route path="/content/:type/:id" element={<ContentPage />} />
             <Route path="/:title" element={<Page />} />
             <Route path="/:title/:id" element={<Page />} />

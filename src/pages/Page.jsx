@@ -52,7 +52,6 @@ function Page() {
           break;
         case "Category":
           getOneCategory(access_token, id).then((category) => {
-            // Pass id here
             setData(category);
             setLoading(false);
           });
@@ -62,7 +61,7 @@ function Page() {
           setLoading(true);
       }
     });
-  }, [title]);
+  }, [title, location.state]); // Include location.state in the dependency array
 
   return (
     <div className="text-white px-20 py-10">

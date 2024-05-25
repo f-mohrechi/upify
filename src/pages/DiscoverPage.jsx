@@ -10,6 +10,7 @@ import PlaylistBox from "../components/boxes/PlaylistBox";
 import MusicTrack from "../components/boxes/MusicTrack";
 import Loading from "../components/loading/Loading";
 import PrimaryColorText from "../components/typography/PrimaryColorText";
+import ArtistBox from "../components/boxes/ArtistBox";
 
 export default function DiscoverPage() {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ export default function DiscoverPage() {
   const trackItems = searchResults?.tracks?.items?.slice(0, limit);
   const albumItems = searchResults?.albums?.items?.slice(0, limit);
   const playlistItems = searchResults?.playlists?.items?.slice(0, limit);
+  const artistsItems = searchResults?.artists?.items?.slice(0, limit);
 
   return (
     <div className="px-20">
@@ -109,6 +111,21 @@ export default function DiscoverPage() {
                 return (
                   <div>
                     <PlaylistBox data={item} key={item.id} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="my-10">
+            <PrimaryColorText
+              text={"Artists"}
+              ClassName={"text-2xl font-semibold"}
+            />
+            <div className="grid grid-cols-6 gap-10 mt-5">
+              {artistsItems.map((item) => {
+                return (
+                  <div>
+                    <ArtistBox data={item} key={item.id} />
                   </div>
                 );
               })}

@@ -113,7 +113,7 @@ export const getOneCategory = async (access_token, id) => {
 export const searchQuery = async (access_token, query) => {
   try {
     const response = await api.get(
-      `/v1/search?type=album,track,playlist&q=${query}`,
+      `/v1/search?type=album,track,playlist,artist&q=${query}`,
       {
         headers: { Authorization: "Bearer " + access_token },
       }

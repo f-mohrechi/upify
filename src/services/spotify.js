@@ -75,6 +75,14 @@ export const getArtists = async (access_token) => {
   return response.data.artists;
 };
 
+export const getOneArtist = async (access_token, id) => {
+  const response = await api.get(`/v1/artists/${id}`, {
+    headers: { Authorization: "Bearer " + access_token },
+  });
+
+  return response.data;
+};
+
 export const getOnePlaylist = async (access_token, id) => {
   try {
     const response = await api.get(`/v1/playlists/${id}`, {
@@ -110,6 +118,7 @@ export const getOneCategory = async (access_token, id) => {
     throw error;
   }
 };
+
 export const searchQuery = async (access_token, query) => {
   try {
     const response = await api.get(
@@ -121,6 +130,18 @@ export const searchQuery = async (access_token, query) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
+export const getArtistTopTracks = async (access_token, id) => {
+  try {
+    const response = await api.get(`/v1/artists/${id}/top-tracks`, {
+      headers: { Authorization: "Bearer " + access_token },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching tracks:", error);
     throw error;
   }
 };
